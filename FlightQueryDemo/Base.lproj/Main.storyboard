@@ -164,11 +164,49 @@
                         <outlet property="departCityTextField" destination="J5F-mY-Tcf" id="oUH-MA-cWl"/>
                         <outlet property="departDateButton" destination="DTz-Eq-xQv" id="0LF-bR-8h1"/>
                         <outlet property="directionSegmentControl" destination="GDZ-Ze-lJh" id="K4s-Yr-Tmh"/>
+                        <segue destination="p8m-7L-jWP" kind="show" identifier="QueryVCSegueToFlightListVC" id="mUY-CU-AgZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="463" y="997"/>
+        </scene>
+        <!--航班列表-->
+        <scene sceneID="IFR-LH-Za9">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="p8m-7L-jWP" customClass="FlightListVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a4e-Ar-n4z"/>
+                        <viewControllerLayoutGuide type="bottom" id="5OX-6I-M3R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LAz-DD-LSd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZhU-sx-aoS">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="p8m-7L-jWP" id="zRd-Dq-urM"/>
+                                    <outlet property="delegate" destination="p8m-7L-jWP" id="7q8-AL-YOe"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZhU-sx-aoS" secondAttribute="trailing" id="AT2-HK-lnQ"/>
+                            <constraint firstItem="ZhU-sx-aoS" firstAttribute="top" secondItem="a4e-Ar-n4z" secondAttribute="bottom" id="DkE-DB-8KJ"/>
+                            <constraint firstItem="5OX-6I-M3R" firstAttribute="top" secondItem="ZhU-sx-aoS" secondAttribute="bottom" id="kyO-A8-4MU"/>
+                            <constraint firstItem="ZhU-sx-aoS" firstAttribute="leading" secondItem="LAz-DD-LSd" secondAttribute="leading" id="wVO-Yj-K5x"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="航班列表" id="D3c-h5-vo6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CPq-MA-MyH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1165" y="997"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JFp-rw-m85">

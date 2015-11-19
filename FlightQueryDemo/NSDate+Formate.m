@@ -22,8 +22,6 @@
     NSInteger month = [components month];
     NSInteger year = [components year];
     
-//    return [NSString stringWithFormat:@"%li-%@-%@", (long)year, (long)month < 10 ? [NSString stringWithFormat:@"0%li", (long)month] : [NSString stringWithFormat:@"%li", (long)month], (long)day < 10 ? [NSString stringWithFormat:@"0%li", (long)day] : [NSString stringWithFormat:@"%li", (long)day]];
-    
     return [NSString stringWithFormat:@"%li-%@-%@", (long)year, [NSDate formateNumber:month], [NSDate formateNumber:day]];
 }
 

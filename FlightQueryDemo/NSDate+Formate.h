@@ -10,6 +10,7 @@
 
 @interface NSDate (Formate)
 
+// 格式化日期
 - (NSString *)formateString;
 
 @end

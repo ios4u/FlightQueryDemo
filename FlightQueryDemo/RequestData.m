@@ -19,6 +19,7 @@ static NSString *requestURL = @"http://touch.qunar.com/h5/flight/flightlist?";
     self = [super init];
     if (self)
     {
+        // 设置默认值
         _departCity = @"北京";
         _arrivalCity = @"上海";
         _departDate = [NSDate date];

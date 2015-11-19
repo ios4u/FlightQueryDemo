@@ -11,6 +11,7 @@
 #import "RequestData.h"
 #import "ResultData.h"
 #import "UIDatePicker+DateType.h"
+#import "FlightListVC.h"
 
 
 @interface QueryVC ()
@@ -141,27 +142,49 @@
                                           if (responseStatusCode == 200)
                                           {
                                               ResultData *result = [[ResultData alloc] initWithData:data];
+                                              
+                                              if (result)
+                                              {
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      [self performSegueWithIdentifier:@"QueryVCSegueToFlightListVC" sender:result];
+                                                  });
+                                              }
+                                              else
+                                              {
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"数据解析有误" message:@"请重试" preferredStyle:UIAlertControllerStyleAlert];
+                                                      UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                                                      [alertController addAction:action];
+                                                      
+                                                      [self presentViewController:alertController animated:YES completion:nil];
+                                                  });
+                                              }
                                           }
                                           else
                                           {
-                                              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[[error userInfo] objectForKey:NSLocalizedFailureReasonErrorKey] message:[NSString stringWithFormat:@"状态码: %ld", (long)responseStatusCode] preferredStyle:UIAlertControllerStyleAlert];
-                                              UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
-                                              [alertController addAction:action];
-                                           
-                                              [self presentViewController:alertController animated:YES completion:nil];
+                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[[error userInfo] objectForKey:NSLocalizedFailureReasonErrorKey] message:[NSString stringWithFormat:@"状态码: %ld", (long)responseStatusCode] preferredStyle:UIAlertControllerStyleAlert];
+                                                  UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                                                  [alertController addAction:action];
+                                                  
+                                                  [self presentViewController:alertController animated:YES completion:nil];
+                                              });
                                           }
-//
-//                                          // 在webView中加载数据
-//                                          [self.webView loadData:data
-//                                                        MIMEType:@"text/html"
-//                                                textEncodingName:@"utf-8"
-//                                                         baseURL:nil];
-//                                          
-//                                          // 加载数据完毕，停止spinner
-//                                          [self.spinner stopAnimating];
+
                                       }];
-    // 使用resume方法启动任务
+    // 启动任务
     [dataTask resume];
+}
+
+// 通过segue传递参数
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue destinationViewController] isKindOfClass:[FlightListVC class]] &&
+        [sender isKindOfClass:[ResultData class]])
+    {
+        FlightListVC *vc = (FlightListVC *)[segue destinationViewController];
+        vc.result = (ResultData *)sender;
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class FlightInfo;
+
 @interface ResultData : NSObject
 
+// 解析结果
+@property (nonatomic, strong) NSMutableArray<FlightInfo *> *arrayResult;
+//
 - (id)initWithData:(NSData *)data;
 
 @end

@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, DateType)
     DateTypeBack,
 };
 
+// UIDatePicker增加一个字段来表示当前选择器是选择出发还是返程
 @interface UIDatePicker (DateType)
 
 @property (nonatomic, assign) DateType dateType;
