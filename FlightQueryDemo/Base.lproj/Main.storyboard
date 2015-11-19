@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mkn-o5-IrP">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--机票搜索-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="QueryVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GDZ-Ze-lJh">
+                                <rect key="frame" x="20" y="72" width="560" height="29"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GDZ-Ze-lJh" secondAttribute="height" multiplier="20:1" id="M3V-jn-I7y"/>
+                                    <constraint firstAttribute="height" constant="28" id="Uy9-v3-WbR"/>
+                                    <constraint firstAttribute="width" secondItem="GDZ-Ze-lJh" secondAttribute="height" multiplier="20:1" id="WVt-5O-aEn"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="单程"/>
+                                    <segment title="往返"/>
+                                </segments>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="M3V-jn-I7y"/>
+                                        <exclude reference="WVt-5O-aEn"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="directionSegmentValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="45D-7s-oJK"/>
+                                    <action selector="hiddenKeyBoard:" destination="BYZ-38-t0r" eventType="valueChanged" id="EMT-Ns-FgM"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UmT-iA-7RY">
+                                <rect key="frame" x="300" y="110" width="1" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="I1Z-Bs-RJe"/>
+                                    <constraint firstAttribute="width" constant="1" id="bMe-V3-MEF"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="出发城市" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J5F-mY-Tcf">
+                                <rect key="frame" x="20" y="108" width="275" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="oyJ-Yg-OE7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="到达城市" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8XC-pM-zuO">
+                                <rect key="frame" x="306" y="108" width="274" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EH0-i7-04K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-eR-uhF">
+                                <rect key="frame" x="20" y="202" width="560" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137254901963" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Lkr-Dr-kyD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="搜 索">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hiddenKeyBoard:" destination="BYZ-38-t0r" eventType="touchDown" id="umT-Y8-iOg"/>
+                                    <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C3U-W1-DUx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTz-Eq-xQv">
+                                <rect key="frame" x="20" y="146" width="140" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="6Oi-8E-1Md"/>
+                                    <constraint firstAttribute="height" constant="30" id="Uyr-nN-X6d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="出发日期 2015-11-11">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hiddenKeyBoard:" destination="BYZ-38-t0r" eventType="touchDown" id="cFM-oD-A3G"/>
+                                    <action selector="selectDate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AXZ-Of-ElM"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENh-lC-xCV">
+                                <rect key="frame" x="440" y="146" width="140" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IWQ-cx-IC6"/>
+                                    <constraint firstAttribute="width" constant="140" id="gzg-vS-luy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="返程日期 2015-11-11">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hiddenKeyBoard:" destination="BYZ-38-t0r" eventType="touchDown" id="fu9-4c-SIV"/>
+                                    <action selector="selectDate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cZO-w7-BGn"/>
+                                </connections>
+                            </button>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zEa-Cr-RhI">
+                                <rect key="frame" x="0.0" y="384" width="600" height="216"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="esU-WF-XDM"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="469529962.42386502">
+                                    <!--2015-11-18 08:59:22 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="datePickerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="JUE-uQ-zGH"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rfs-eR-uhF" firstAttribute="top" secondItem="ENh-lC-xCV" secondAttribute="bottom" constant="26" id="1LL-QZ-th2"/>
+                            <constraint firstItem="UmT-iA-7RY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4QM-uZ-GI8"/>
+                            <constraint firstItem="GDZ-Ze-lJh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="7oI-vR-4PS"/>
+                            <constraint firstItem="J5F-mY-Tcf" firstAttribute="top" secondItem="GDZ-Ze-lJh" secondAttribute="bottom" constant="8" id="FA0-Z6-sqH"/>
+                            <constraint firstItem="8XC-pM-zuO" firstAttribute="top" secondItem="GDZ-Ze-lJh" secondAttribute="bottom" constant="8" id="Go4-eL-Th4"/>
+                            <constraint firstItem="zEa-Cr-RhI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="I07-58-qPe"/>
+                            <constraint firstAttribute="trailing" secondItem="ENh-lC-xCV" secondAttribute="trailing" constant="20" id="NVG-jO-cSC"/>
+                            <constraint firstItem="DTz-Eq-xQv" firstAttribute="top" secondItem="J5F-mY-Tcf" secondAttribute="bottom" constant="8" id="NpM-ig-urC"/>
+                            <constraint firstItem="DTz-Eq-xQv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="P4Z-Ad-v5g"/>
+                            <constraint firstAttribute="trailing" secondItem="GDZ-Ze-lJh" secondAttribute="trailing" constant="20" id="PLw-os-KKJ"/>
+                            <constraint firstItem="UmT-iA-7RY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="110" id="Q9r-8M-2gk"/>
+                            <constraint firstAttribute="trailing" secondItem="rfs-eR-uhF" secondAttribute="trailing" constant="20" id="QRf-FE-rzG"/>
+                            <constraint firstItem="rfs-eR-uhF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="TRW-yY-iO3"/>
+                            <constraint firstItem="GDZ-Ze-lJh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Ue9-fG-VgR"/>
+                            <constraint firstItem="J5F-mY-Tcf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="iTl-ov-kmH"/>
+                            <constraint firstAttribute="trailing" secondItem="8XC-pM-zuO" secondAttribute="trailing" constant="20" id="lyL-ka-uNh"/>
+                            <constraint firstItem="ENh-lC-xCV" firstAttribute="top" secondItem="8XC-pM-zuO" secondAttribute="bottom" constant="8" id="o9f-RX-uSc"/>
+                            <constraint firstAttribute="trailing" secondItem="zEa-Cr-RhI" secondAttribute="trailing" id="orp-7T-sEt"/>
+                            <constraint firstItem="8XC-pM-zuO" firstAttribute="leading" secondItem="UmT-iA-7RY" secondAttribute="trailing" constant="5" id="qRV-BW-W2O"/>
+                            <constraint firstItem="UmT-iA-7RY" firstAttribute="leading" secondItem="J5F-mY-Tcf" secondAttribute="trailing" constant="5" id="qwG-bz-Ux7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zEa-Cr-RhI" secondAttribute="bottom" id="uaE-Nf-nm8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="机票搜索" id="aqe-yP-ysg"/>
+                    <connections>
+                        <outlet property="arriveCityTextField" destination="8XC-pM-zuO" id="4Kv-6p-iWb"/>
+                        <outlet property="backDateButton" destination="ENh-lC-xCV" id="GWs-EE-VnU"/>
+                        <outlet property="datePicker" destination="zEa-Cr-RhI" id="ycA-hM-x1Y"/>
+                        <outlet property="departCityTextField" destination="J5F-mY-Tcf" id="oUH-MA-cWl"/>
+                        <outlet property="departDateButton" destination="DTz-Eq-xQv" id="0LF-bR-8h1"/>
+                        <outlet property="directionSegmentControl" destination="GDZ-Ze-lJh" id="K4s-Yr-Tmh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463" y="997"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JFp-rw-m85">
+            <objects>
+                <navigationController id="mkn-o5-IrP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0sc-eO-gON">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="QX8-CK-YxJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ISs-mS-xdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-285" y="997"/>
+        </scene>
+    </scenes>
+</document>
