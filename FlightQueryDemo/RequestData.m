@@ -11,6 +11,7 @@
 #import <objc/runtime.h>
 
 static NSString *requestURL = @"http://touch.qunar.com/h5/flight/flightlist?";
+#define SECONDPERDAY (24*3600)
 
 @implementation RequestData
 
@@ -22,8 +23,8 @@ static NSString *requestURL = @"http://touch.qunar.com/h5/flight/flightlist?";
         // 设置默认值
         _departCity = @"北京";
         _arrivalCity = @"上海";
-        _departDate = [NSDate date];
-        _backDate = [NSDate date];
+        _departDate = [NSDate dateWithTimeIntervalSinceNow:SECONDPERDAY];
+        _backDate = [NSDate dateWithTimeIntervalSinceNow:SECONDPERDAY];
         _direction = FlightQueryDirectionOneWay;
     }
     return self;
